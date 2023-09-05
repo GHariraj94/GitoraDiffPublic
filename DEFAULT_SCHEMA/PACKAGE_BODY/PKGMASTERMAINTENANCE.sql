@@ -1,6 +1,11 @@
 CREATE OR REPLACE NONEDITIONABLE PACKAGE BODY "PKGMASTERMAINTENANCE" is
 
 -- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
 
 Function fncBuildQuery
     (   ParamData   in  Gconst.gClobType%Type)
@@ -38,7 +43,12 @@ Begin
     varUserID:=Gconst.fncxmlextract(xmlType(ParamData),'UserCode',VarUserID);
     varOperation := 'Extracting Entity fields for : ' || varEntity;
   --insert into rtemp(TT,TT2,TT3) values ('Inside fncBuildQuery 1','numAction: '||numAction||' varEntity: '||varEntity,' ParamData: '||ParamData);commit;
-
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
     For curFields in
     (select fldp_column_name, fldp_xml_field,
         fldp_key_no, fldp_data_type,fldp_text_format_code
@@ -56,7 +66,12 @@ Begin
       elsif  varEntity = 'DEALCONFIRMATION' and curFields.fldp_xml_field = 'SerialNumber' then
         curFields.fldp_key_no := 0;
       end if;
-
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
       if curFields.fldp_xml_field = 'RecordStatus' then
         varStatusField := curFields.fldp_column_name;
       end if;
@@ -107,7 +122,12 @@ Begin
             numTemp := numTemp + 1;
         end if;
       end if;
-
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
       if curFields.fldp_data_type = 'DATE' then
         varQuery := varQuery || ' to_char(' || curFields.fldp_column_name || ',';
         varQuery := varQuery || '''' || 'dd/mm/yyyy' || '''' || ') as ';
@@ -210,7 +230,12 @@ Begin
      if numAction in (GConst.DELETESAVE, GcONST.CONFIRMSAVE,GCONST.UNCONFIRMSAVE,GCONST.REJECTSAVE) then
       return numError;
     end if;
-
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
     varMessage := 'Creating Audit trail for ' || varSource;
     GLOG.LOG_WRITE(varMessage);
     Begin
@@ -12803,7 +12828,12 @@ if EditType = SYSBULKCONFIRMATIONPROCESS then
               varreference := GConst.fncXMLExtract(xmlTemp, varTemp, varreference, Gconst.TYPENODEPATH);
              --  Glog.log_write(varTemp);             
            --    Glog.log_write(varreference);
-
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
                varTemp := varTemp2 || '[@NUM="' || numTemp || '"]/BCAC_VOUCHER_INR';
               varoperation :='Extracting Data from XML' || varTemp;
               numINR := GConst.fncXMLExtract(xmlTemp, varTemp, numINR, Gconst.TYPENODEPATH);
@@ -17702,5 +17732,10 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20101, VARERROR);
         RETURN NUMSERIAL;
 END FNCKEYSERIAL;
-
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
+-- SeedClone Test
 End pkgMasterMaintenance;
